@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero and First Conditional Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .sentence {
+            margin: 10px 0;
+        }
+        input {
+            width: 150px;
+            padding: 5px;
+            margin-left: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zero and First Conditional Exercise</h1>
+    <p>Conjugate the verb in parentheses to complete the sentences:</p>
+    <form id="exerciseForm">
+        <!-- Sentences -->
+        <div class="sentence">1. If water reaches 100°C, it <input type="text" id="q1" placeholder="________"> (boil).</div>
+        <div class="sentence">2. If you heat ice, it <input type="text" id="q2" placeholder="________"> (melt).</div>
+        <div class="sentence">3. If you touch fire, it <input type="text" id="q3" placeholder="________"> (burn).</div>
+        <div class="sentence">4. If it rains, the ground <input type="text" id="q4" placeholder="________"> (get) wet.</div>
+        <div class="sentence">5. If you mix blue and yellow, you <input type="text" id="q5" placeholder="________"> (get) green.</div>
+        <div class="sentence">6. If it rains tomorrow, I <input type="text" id="q6" placeholder="________"> (take) an umbrella.</div>
+        <div class="sentence">7. If I study hard, I <input type="text" id="q7" placeholder="________"> (pass) the exam.</div>
+        <div class="sentence">8. If she calls me, I <input type="text" id="q8" placeholder="________"> (answer).</div>
+        <div class="sentence">9. If we leave early, we <input type="text" id="q9" placeholder="________"> (catch) the train.</div>
+        <div class="sentence">10. If he works hard, he <input type="text" id="q10" placeholder="________"> (get) a promotion.</div>
+        <div class="sentence">11. If you eat too much sugar, you <input type="text" id="q11" placeholder="________"> (gain) weight.</div>
+        <div class="sentence">12. If plants don’t get sunlight, they <input type="text" id="q12" placeholder="________"> (die).</div>
+        <div class="sentence">13. If I miss the bus, I <input type="text" id="q13" placeholder="________"> (be) late.</div>
+        <div class="sentence">14. If you exercise regularly, you <input type="text" id="q14" placeholder="________"> (stay) healthy.</div>
+        <div class="sentence">15. If we don’t water the plants, they <input type="text" id="q15" placeholder="________"> (wilt).</div>
+        <div class="sentence">16. If you practice every day, you <input type="text" id="q16" placeholder="________"> (improve).</div>
+        <div class="sentence">17. If I don’t sleep enough, I <input type="text" id="q17" placeholder="________"> (feel) tired.</div>
+        <div class="sentence">18. If the weather is nice, we <input type="text" id="q18" placeholder="________"> (go) for a walk.</div>
+        <div class="sentence">19. If he finishes the project on time, he <input type="text" id="q19" placeholder="________"> (receive) praise.</div>
+        <div class="sentence">20. If they study together, they <input type="text" id="q20" placeholder="________"> (learn) faster.</div>
+
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        // Correct answers
+        const answers = {
+            q1: "boils",
+            q2: "melts",
+            q3: "burns",
+            q4: "gets",
+            q5: "get",
+            q6: "will take",
+            q7: "will pass",
+            q8: "will answer",
+            q9: "will catch",
+            q10: "will get",
+            q11: "gain",
+            q12: "die",
+            q13: "will be",
+            q14: "stay",
+            q15: "wilt",
+            q16: "improve",
+            q17: "feel",
+            q18: "will go",
+            q19: "will receive",
+            q20: "will learn"
+        };
+
+        // Function to check answers
+        function checkAnswers() {
+            let correctCount = 0;
+            let totalQuestions = Object.keys(answers).length;
+            let feedback = "";
+
+            for (let key in answers) {
+                const userAnswer = document.getElementById(key).value.trim().toLowerCase();
+                const correctAnswer = answers[key];
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                } else {
+                    feedback += `<p class="incorrect">Question ${key.slice(1)}: Your answer was "${userAnswer || "[empty]"}". The correct answer is "${correctAnswer}".</p>`;
+                }
+            }
+
+            // Display results
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `
+                <p>You got ${correctCount} out of ${totalQuestions} correct.</p>
+                ${correctCount === totalQuestions ? "<p>Excellent work!</p>" : "<p>Here are your mistakes:</p>"}
+                ${feedback}
+            `;
+        }
+    </script>
+</body>
+</html>
